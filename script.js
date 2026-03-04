@@ -2,9 +2,25 @@ const DAY_START = 8 * 60;
 const DAY_END = 22 * 60;
 const SLOT_MINUTES = 15;
 
+let sessions = [];  // global variable
+
 fetch("nicar-schedule.json")
   .then(res => res.json())
-  .then(data => init(data.sessions));
+  .then(data =>{ 
+    sessions = data.sessions;
+    // Save session interested state
+
+    sessions.forEach(s => {
+    // Create unique ID: date_room_start
+    s.id = `${s.date}_${s.room}_${s.start}`;
+    
+    // Load persisted interested state if exists
+    const stored = localStorage.getItem(`interested_${s.id}`);
+    s.interested = stored === "true"; // convert string to boolean
+    });
+    
+    init(data.sessions); 
+});
 
 function init(sessions) {
   const days = [...new Set(sessions.map(d => d.date))];
@@ -141,6 +157,9 @@ function placeSession(session, rooms) {
   const endNormal = formatTime(...session.end.split(":").map(Number));
   div.innerHTML = `<span class="session-time">${startNormal} – ${endNormal}</span> <strong>${session.title}</strong>`;
 
+  // Apply the interested state
+  if (session.interested) div.classList.add("highlighted");
+
   // Store reference for modal toggle
   div._session = session;
   session._div = div;
@@ -187,6 +206,10 @@ function showDetails(session) {
 
   // Click handler for toggling interest
   interestBtn.onclick = () => {
+    session.interested = !session.interested;       // toggle
+    localStorage.setItem(`interested_${session.id}`, session.interested); // save
+
+
     if (currentSessionDiv.classList.contains("highlighted")) {
       currentSessionDiv.classList.remove("highlighted");
       interestBtn.textContent = "Interested";
@@ -214,3 +237,8 @@ function formatTime(hour, minute) {
   const h = hour % 12 || 12;
   return `${h}:${minute.toString().padStart(2,"0")} ${ampm}`;
 }
+
+
+
+
+

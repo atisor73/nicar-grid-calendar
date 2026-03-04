@@ -67,7 +67,7 @@ body {
   background: #fff;
   border-right: 1px solid #ccc;
   z-index: 3;
-  padding-top: 60px; /*MATCH the height of .room-header*/
+  padding-top: 40px; /*MATCH the height of .room-header*/
 }
 
 .time-slot {
@@ -86,7 +86,7 @@ body {
   position: relative;
   gap: 1px;
   background: #fefefe;
-  margin: 50px;
+  margin: 0px;
 }
 
 .room-header {
@@ -95,17 +95,15 @@ body {
   background: #f7f7f7;
   font-weight: bold;
   text-align: center;
-  padding: 4px;
   border-bottom: 2px solid #999;
   z-index: 2;
   padding: 8px 4px;       /* increase padding */
-  height: 40px;            /* make taller */
+  height: 15px;            /* make taller */
   display: flex;
   align-items: center;     /* vertically center text */
   justify-content: center; /* horizontally center text */
   font-size: 12px !important;      /* adjust as needed */
-  line-height: 20px !important;    /* match the height of the header row for vertical centering */
-  height: 20px!important;           /* adjust to fit bigger font */
+  line-height: 15px !important;    /* match the height of the header row for vertical centering */
 
 }
 

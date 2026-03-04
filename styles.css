@@ -194,18 +194,37 @@ body {
 } */
 
 
-.session-tracks {
+#modal-bottom {
+  display: flex;
+  flex-wrap: wrap;           /* wrap if screen is too narrow */
+  gap: 16px;                 /* space between items */
+  margin-top: 12px;
+  align-items: center;       /* vertically center items */
+}
+#modal-skill, #modal-type {
+  font-size: 13px;
+}
+
+#modal-tracks .track-label {
+    font-weight: bold;
+    font-size: 13px;   /* match skill/type font size */
+    margin-right: 4px; /* spacing before pills */
+}
+
+#modal-tracks {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-top: 6px;
 }
 
-.session-tracks span {
-  background: #e0e0e0;
-  color: #333;
-  font-size: 10px;
-  padding: 2px 6px;
+.track-pill {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 2px 2px 0 0;
+  background-color: #bbbbcf;
+  fill-opacity: .8;
+  border: 1px solid #cdcdcd;
   border-radius: 12px;
-  white-space: nowrap;
+  font-size: 12px;
+  color: #333;
 }

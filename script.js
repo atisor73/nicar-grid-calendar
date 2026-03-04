@@ -11,13 +11,29 @@ fetch("nicar-schedule.json")
     // Save session interested state
 
     sessions.forEach(s => {
-    // Create unique ID: date_room_start
-    s.id = `${s.date}_${s.room}_${s.start}`;
-    
-    // Load persisted interested state if exists
-    const stored = localStorage.getItem(`interested_${s.id}`);
-    s.interested = stored === "true"; // convert string to boolean
+        // Create unique ID: date_room_start
+        s.id = `${s.date}_${s.room}_${s.start}`;
+        
+        // Load persisted interested state if exists
+        const stored = localStorage.getItem(`interested_${s.id}`);
+        s.interested = stored === "true"; // convert string to boolean
     });
+
+    
+    // Log info for each session
+    sessions.forEach(session => {
+      console.log("Session Info:", {
+        title: session.title,
+        date: session.date,
+        start: session.start,
+        end: session.end,
+        room: session.room,
+        tracks: session.tracks,
+        description: session.description,
+        interested: session.interested
+      });
+    });
+    
     init(data.sessions); 
 });
 
@@ -219,7 +235,34 @@ function showDetails(session) {
     }
 
     
-  };
+    };
+
+
+    // Skill Level
+  document.getElementById("modal-skill").innerHTML = `<strong>Skill level: </strong> ${session.skill_level || "N/A"}`;
+
+  // Type
+  document.getElementById("modal-type").innerHTML = `<strong>Type: </strong>${session.type || "N/A"}`;
+
+  // Tracks as pill boxes
+  const tracksContainer = document.getElementById("modal-tracks");
+
+  tracksContainer.innerHTML = ""; // clear previous
+  if (session.tracks && session.tracks.length) {
+      // Add plain text label first
+    const label = document.createElement("span");
+    label.innerHTML = "<strong>Tags: </strong>";
+    label.className = "track-label";   // <-- add this class
+    label.style.fontWeight = "normal"; // optional styling
+    tracksContainer.appendChild(label);
+
+    session.tracks.forEach(track => {
+      const span = document.createElement("span");
+      span.className = "track-pill";
+      span.textContent = track;
+      tracksContainer.appendChild(span);
+    });
+  }
 
   // Show modal
   document.getElementById("modal").style.display = "flex";

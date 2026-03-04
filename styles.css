@@ -1,0 +1,195 @@
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+#header-row {
+  display: flex;
+  align-items: center;      /* vertically center title and buttons */
+  gap: 16px;                /* space between title and buttons */
+  flex-wrap: wrap;          /* wrap buttons if screen is narrow */
+  margin-bottom: 20px;
+}
+
+#schedule-title {
+  margin: 0;
+  font-size: 24px;          /* adjust as needed */
+  font-weight: bold;
+}
+
+#day-buttons {
+  display: flex;
+  gap: 8px;                 /* space between buttons */
+  margin-top:20px;
+  margin-bottom: 20px;
+
+}
+
+
+#day-buttons button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #888;
+  background: #fff;
+  border-radius:10px;
+  margin-left:10px;
+  white-space: nowrap;      /* prevent line breaks inside button text */
+  transition: background 0.2s, color 0.2s;
+
+}
+
+/* Selected button style */
+#day-buttons button.selected {
+  background: #454545;      /* dark background for selected */
+  color: #fff;           /* white text */
+  border-color: #777;
+}
+
+
+#calendar-wrapper {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  overflow-x: auto;   /* 👈 allow horizontal scroll */
+  border: 1px solid #ccc;
+  /*  */
+  width: 100vw;
+  height: 80vh;
+}
+
+#time-axis {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border-right: 1px solid #ccc;
+  z-index: 3;
+  padding-top: 60px; /*MATCH the height of .room-header*/
+}
+
+.time-slot {
+  font-size: 10px;
+  color: #cdcdcd;
+  border-bottom: 1px solid #eee;
+  padding: 0px 4px;
+  height: 20px;
+  line-height: 16px;        /* center text vertically */
+
+}
+
+
+#calendar {
+  display: grid;
+  position: relative;
+  gap: 1px;
+  background: #fefefe;
+}
+
+.room-header {
+  position: sticky;
+  top: 0;
+  background: #f7f7f7;
+  font-weight: bold;
+  text-align: center;
+  padding: 4px;
+  border-bottom: 2px solid #999;
+  z-index: 2;
+  padding: 8px 4px;       /* increase padding */
+  height: 40px;            /* make taller */
+  display: flex;
+  align-items: center;     /* vertically center text */
+  justify-content: center; /* horizontally center text */
+  font-size: 12px !important;      /* adjust as needed */
+  line-height: 20px !important;    /* match the height of the header row for vertical centering */
+  height: 20px!important;           /* adjust to fit bigger font */
+
+}
+
+
+
+.session {
+  background: #f7f7f7;
+  color: #454545;
+  padding: 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid #cdcdcd; /* add this line for the border */
+  
+}
+
+
+.session:hover {
+  background: #e0e0e0;
+}
+
+.session.highlighted {
+  border: 2px solid maroon;
+}
+
+
+.session-time {
+  font-size: 9px;
+  color: #888;
+  margin-right: 4px;
+}
+
+
+/* Modal Panel */
+#modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;                /* make sure it’s above everything */
+    pointer-events: auto;        /* ensure modal is interactive */
+
+}
+
+#modal .content {
+  background: white;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#modal .content p {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+#modal .close {
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: -12px;
+}
+
+
+#interest-toggle {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 2px solid maroon;
+  background-color: maroon;
+  opacity:0.8;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  margin-top:20px
+}
+
+
+/* 
+#interest-toggle:hover {
+  background-color: #b22;
+  border-color: #b22;
+} */

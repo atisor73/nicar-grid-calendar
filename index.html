@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NICAR Schedule</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="header-row">
+        <h1 id="schedule-title">NICAR Schedule</h1>
+        <div id="day-buttons"></div>
+    </div>
+
+  <div id="calendar-wrapper">
+    <div id="time-axis">
+        <div class="time-header-spacer"></div>
+    </div>
+    
+    <div id="calendar"></div>
+  </div>
+
+
+
+
+
+  <!-- Modal for session details -->
+<div id="modal">
+  <div class="content">
+    <span class="close">&times;</span>
+    <h3 id="modal-title"></h3>
+    <p id="modal-time"></p>
+    <p id="modal-room"></p>
+    <p id="modal-tracks"></p>
+    <div id="modal-desc"></div>
+    <!-- Toggle button for interested -->
+    <button id="interest-toggle">Interested</button>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -159,6 +159,7 @@ function placeSession(session, rooms) {
   // Apply the interested state
   if (session.interested) div.classList.add("highlighted");
 
+  
   // Store reference for modal toggle
   div._session = session;
   session._div = div;

@@ -3,3 +3,8 @@ This is based off of \@tylermachado's schedule found here:  https://www.tylermac
 Just clone and run 
 `python -m http.server 8000`
 
+
+
+![](demo.png)
+
+![](demo2.png)

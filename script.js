@@ -18,7 +18,6 @@ fetch("nicar-schedule.json")
     const stored = localStorage.getItem(`interested_${s.id}`);
     s.interested = stored === "true"; // convert string to boolean
     });
-    
     init(data.sessions); 
 });
 

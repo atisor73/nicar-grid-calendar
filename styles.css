@@ -1,7 +1,12 @@
+#app-wrapper {
+  margin-left: 10px;   /* adjust amount as needed */
+  margin-right: 10px;
+}
+
 
 body {
   font-family: sans-serif;
-  margin: 20px;
+   margin: 0px 20px 0 20px;
 }
 
 #header-row {
@@ -9,7 +14,7 @@ body {
   align-items: center;      /* vertically center title and buttons */
   gap: 16px;                /* space between title and buttons */
   flex-wrap: wrap;          /* wrap buttons if screen is narrow */
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 #schedule-title {
@@ -54,7 +59,8 @@ body {
   overflow-x: auto;   /* 👈 allow horizontal scroll */
   border: 1px solid #ccc;
   /*  */
-  width: 100vw;
+  /* width: 100vw; */
+  width: 100%;
   height: 80vh;
 }
 

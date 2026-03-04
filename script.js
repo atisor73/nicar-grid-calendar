@@ -41,7 +41,7 @@ function init(sessions) {
   const days = [...new Set(sessions.map(d => d.date))];
   const dayButtons = document.getElementById("day-buttons");
 
-  days.forEach(day => {
+  days.forEach((day, index) => {
     const btn = document.createElement("button");
     const dateObj = new Date(day);
     const weekday = dateObj.toLocaleDateString("en-US", { weekday: "long" });
@@ -58,10 +58,15 @@ function init(sessions) {
     };
 
     dayButtons.appendChild(btn);
+
+    // Select the first button by default
+    if (index === 0) {
+        btn.classList.add("selected");
+        renderDay(days[0], sessions);
+    }
   });
 
 
-// ...
 
 
   renderDay(days[0], sessions);
@@ -90,7 +95,23 @@ function init(sessions) {
 
 function renderDay(day, sessions) {
   const daySessions = sessions.filter(d => d.date === day);
-  const rooms = [...new Set(daySessions.map(d => d.room))].sort();
+//   const rooms = [...new Set(daySessions.map(d => d.room))].sort();
+
+  const rooms = [...new Set(daySessions.map(d => d.room))].sort((a, b) => {
+    const specialRooms = [
+        "Follow signs near Ballroom F",
+        "Foyer",
+        "Griffin Hall",
+        "Near the escalator"
+    ];
+
+    // If a is special but b is not, a goes after b
+    if (specialRooms.includes(a) && !specialRooms.includes(b)) return 1;
+    // If b is special but a is not, a goes before b
+    if (!specialRooms.includes(a) && specialRooms.includes(b)) return -1;
+    // Otherwise sort alphabetically
+    return a.localeCompare(b);
+    });
 
   buildTimeAxis();
   buildCalendarGrid(rooms);

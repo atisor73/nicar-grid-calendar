@@ -202,12 +202,12 @@ body {
   align-items: center;       /* vertically center items */
 }
 #modal-skill, #modal-type {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 #modal-tracks .track-label {
     font-weight: bold;
-    font-size: 13px;   /* match skill/type font size */
+    font-size: 12px;   /* match skill/type font size */
     margin-right: 4px; /* spacing before pills */
 }
 

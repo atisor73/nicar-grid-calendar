@@ -43,12 +43,23 @@ function init(sessions) {
 
   days.forEach((day, index) => {
     const btn = document.createElement("button");
+
+      // Find the first session on this date
+    const sessionForDay = sessions.find(s => s.date === day);
+
+    // Use the JSON strings directly
+    const displayDay = sessionForDay.day;   // "Thursday"
+    const displayDate = day;                // "2026-03-05"
+
+    btn.textContent = `${displayDay} ${displayDate}`;
+
+
     const dateObj = new Date(day);
     const weekday = dateObj.toLocaleDateString("en-US", { weekday: "long" });
     const month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
     const date = dateObj.getDate().toString().padStart(2, "0");
-    btn.textContent = `${weekday} ${month}/${date}`;
-
+    // btn.textContent = `${weekday} ${month}/${date}`;
+    // btn.textContent = `${s.day} ${month}/${date}`;
     // btn.onclick = () => renderDay(day, sessions);
 
     btn.onclick = () => {

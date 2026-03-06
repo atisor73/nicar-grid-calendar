@@ -71,16 +71,16 @@ function init(sessions) {
     dayButtons.appendChild(btn);
 
     // Select the first button by default
-    if (index === 0) {
+    if (index === 1) {
         btn.classList.add("selected");
-        renderDay(days[0], sessions);
+        renderDay(days[1], sessions);
     }
   });
 
 
 
 
-  renderDay(days[0], sessions);
+  // renderDay(days[0], sessions);
 
   // Modal close
 

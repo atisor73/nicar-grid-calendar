@@ -71,7 +71,7 @@ function init(sessions) {
     dayButtons.appendChild(btn);
 
     // Select the first button by default
-    if (index === 1) {
+    if (index === 2) {
         btn.classList.add("selected");
         renderDay(days[1], sessions);
     }

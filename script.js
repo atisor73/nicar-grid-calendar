@@ -73,7 +73,7 @@ function init(sessions) {
     // Select the first button by default
     if (index === 2) {
         btn.classList.add("selected");
-        renderDay(days[1], sessions);
+        renderDay(days[2], sessions);
     }
   });
 
